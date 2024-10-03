@@ -64,8 +64,8 @@ all: main-build
 main-build: Lab1.elf secondary-outputs
 
 # Tool invocations
-Lab1.elf: $(OBJS) $(USER_OBJS) G:\Study\ViXuLy\BeforeGit\Lab1\Lab1\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Lab1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"G:\Study\ViXuLy\BeforeGit\Lab1\Lab1\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Lab1.elf: $(OBJS) $(USER_OBJS) G:\Study\ViXuLy\BeforeGit\Lab1\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Lab1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"G:\Study\ViXuLy\BeforeGit\Lab1\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
