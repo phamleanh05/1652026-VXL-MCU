@@ -77,6 +77,15 @@ void setNumberOnClock(int num){
 
     HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET);
 }
+
+void clearNumberOnClock(int num){
+    // Loop through each LED and turn it off
+    if(num < 0 || num > 11){
+    	return;
+    }
+
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_RESET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -119,7 +128,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  setNumberOnClock(5);
+	  clearNumberOnClock(5);
   }
   /* USER CODE END 3 */
 }
@@ -174,7 +183,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, D1_Pin|D2_Pin|D3_Pin|D4_Pin
                           |D5_Pin|D6_Pin|D7_Pin|D8_Pin
-                          |D9_Pin|D10_Pin|D11_Pin|D12_Pin, GPIO_PIN_RESET);
+                          |D9_Pin|D10_Pin|D11_Pin|D12_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : D1_Pin D2_Pin D3_Pin D4_Pin
                            D5_Pin D6_Pin D7_Pin D8_Pin
