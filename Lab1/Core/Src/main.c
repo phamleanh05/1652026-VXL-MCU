@@ -56,16 +56,26 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void clearAllClock(){
-    // Array of pins for LEDs D1 to D12
-    uint16_t ledPins[12] = {D1_Pin, D2_Pin, D3_Pin, D4_Pin,
-                            D5_Pin, D6_Pin, D7_Pin, D8_Pin,
-                            D9_Pin, D10_Pin, D11_Pin, D12_Pin};
+// Array of pins for LEDs D1 to D12
+uint16_t ledPins[12] = {D2_Pin, D3_Pin, D4_Pin,
+                        D5_Pin, D6_Pin, D7_Pin, D8_Pin,
+                        D9_Pin, D10_Pin, D11_Pin, D12_Pin, D1_Pin};
 
+void clearAllClock(){
     // Loop through each LED and turn it off
     for (int i = 0; i < 12; i++) {
-        HAL_GPIO_WritePin(GPIOA, ledPins[i], RESET); // Turn off LED
+        HAL_GPIO_WritePin(GPIOA, ledPins[i], GPIO_PIN_RESET); // Turn off LED
     }
+}
+
+void setNumberOnClock(int num){
+    // Loop through each LED and turn it off
+    if(num < 0 || num > 11){
+    	return;
+    }
+    clearAllClock();
+
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET);
 }
 /* USER CODE END 0 */
 
@@ -103,24 +113,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint16_t ledPins[12] = {D1_Pin, D2_Pin, D3_Pin, D4_Pin,
-                            D5_Pin, D6_Pin, D7_Pin, D8_Pin,
-                            D9_Pin, D10_Pin, D11_Pin, D12_Pin};
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  for (int i = 0; i < 12; i++)
-	  {
-		  HAL_GPIO_WritePin(GPIOA, ledPins[i], GPIO_PIN_SET); // Turn on LED
-		  HAL_Delay(500); // Wait for 500 ms before lighting the next LED
-	  }
-
-	  HAL_Delay(1000);
-	  clearAllClock(); // Turn off all LEDs simultaneously
-	  HAL_Delay(2000);
+	  setNumberOnClock(5);
   }
   /* USER CODE END 3 */
 }
