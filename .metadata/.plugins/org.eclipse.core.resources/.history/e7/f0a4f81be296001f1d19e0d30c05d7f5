@@ -93,28 +93,23 @@ void clearNumberOnClock(int num){
 
 void updateClock() {
     // Display the current time using the LEDs
-    clearAllClock(); // Clear all LEDs
+    clearAllClock(); // Clear all LEDs first
 
     // Update time
-    for (hour = 0; hour < 12; hour++) {
-        setNumberOnClock(hour); //Current hour
-        HAL_Delay(100);
-
-        for (minute = 0; minute < 60; minute++) {
-            clearAllClock(); // Clear all LEDs (if no clear it will keep old value like hour=1 but led will ON 0h and 1h)
-            setNumberOnClock(hour); // Current hour
-            setNumberOnClock(minute / 5); // Current minute (5-min increments)
-            HAL_Delay(100);
-
-            for (second = 0; second < 60; second++) {
-                clearAllClock(); // Clear all LEDs
-                setNumberOnClock(hour); // Current hour
-                setNumberOnClock(minute / 5); // Current minute (5-min increments)
-                setNumberOnClock(second / 5); // Current second (5-sec increments)
-                HAL_Delay(100);
-            }
-        }
+    for(hour = 0; hour < 12; hour++){
+    	setNumberOnClock(hour);
+    	for(minute = 0; minute < 60; minute++){
+    		setNumberOnClock(minute/5);
+    		for(second = 0; second < 60; second ++){
+    				setNumberOnClock(hour);
+    				setNumberOnClock(minute/5);
+    		    	setNumberOnClock(second/5);
+    		    	HAL_Delay(1000);
+    		    	clearNumberOnClock(second/5);
+    		}
+    	}
     }
+
 }
 /* USER CODE END 0 */
 

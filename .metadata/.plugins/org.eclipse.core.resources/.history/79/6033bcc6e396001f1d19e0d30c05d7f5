@@ -101,7 +101,7 @@ void updateClock() {
         HAL_Delay(100);
 
         for (minute = 0; minute < 60; minute++) {
-            clearAllClock(); // Clear all LEDs (if no clear it will keep old value like hour=1 but led will ON 0h and 1h)
+            clearAllClock(); // Clear all LEDs
             setNumberOnClock(hour); // Current hour
             setNumberOnClock(minute / 5); // Current minute (5-min increments)
             HAL_Delay(100);

@@ -61,10 +61,6 @@ uint16_t ledPins[12] = {D2_Pin, D3_Pin, D4_Pin,
                         D5_Pin, D6_Pin, D7_Pin, D8_Pin,
                         D9_Pin, D10_Pin, D11_Pin, D12_Pin, D1_Pin};
 
-int hour = 0;
-int minute = 0;
-int second = 0;
-
 void clearAllClock(){
     // Loop through each LED and turn it off
     for (int i = 0; i < 12; i++) {
@@ -72,49 +68,41 @@ void clearAllClock(){
     }
 }
 
-void setNumberOnClock(int num) {
-    // Ensure the input is within the valid range
-    if (num < 0 || num > 11) {
-        return; // Invalid input, do nothing
+void setHourOnClock(int num){
+    // Loop through each LED and turn it off
+    if(num < 0 || num > 11){
+    	return;
     }
+    clearAllClock();
 
-    // Turn on the specified LED
-    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET); // Turn on the specific LED
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET);
 }
 
-void clearNumberOnClock(int num){
+void setMinuteOnClock(int num){
     // Loop through each LED and turn it off
     if(num < 0 || num > 11){
     	return;
     }
 
-    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET);
 }
 
-void updateClock() {
-    // Display the current time using the LEDs
-    clearAllClock(); // Clear all LEDs
-
-    // Update time
-    for (hour = 0; hour < 12; hour++) {
-        setNumberOnClock(hour); //Current hour
-        HAL_Delay(100);
-
-        for (minute = 0; minute < 60; minute++) {
-            clearAllClock(); // Clear all LEDs (if no clear it will keep old value like hour=1 but led will ON 0h and 1h)
-            setNumberOnClock(hour); // Current hour
-            setNumberOnClock(minute / 5); // Current minute (5-min increments)
-            HAL_Delay(100);
-
-            for (second = 0; second < 60; second++) {
-                clearAllClock(); // Clear all LEDs
-                setNumberOnClock(hour); // Current hour
-                setNumberOnClock(minute / 5); // Current minute (5-min increments)
-                setNumberOnClock(second / 5); // Current second (5-sec increments)
-                HAL_Delay(100);
-            }
-        }
+void setSecondOnClock(int num){
+    // Loop through each LED and turn it off
+    if(num < 0 || num > 60){
+    	return;
     }
+    num = num/5;
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_SET);
+}
+
+void clearNumberOnClock(int num){
+    // Loop through each LED and turn it off
+    if(num < 0 || num > 60){
+    	return;
+    }
+    num = num/5;
+    HAL_GPIO_WritePin(GPIOA, ledPins[num], GPIO_PIN_RESET);
 }
 /* USER CODE END 0 */
 
@@ -158,7 +146,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  updateClock();
+	  clearNumberOnClock(5);
   }
   /* USER CODE END 3 */
 }
