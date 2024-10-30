@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,13 +49,24 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void clearAllClock(){
+    // Array of pins for LEDs D1 to D12
+    uint16_t ledPins[12] = {D1_Pin, D2_Pin, D3_Pin, D4_Pin,
+                            D5_Pin, D6_Pin, D7_Pin, D8_Pin,
+                            D9_Pin, D10_Pin, D11_Pin, D12_Pin};
 
+    // Loop through each LED and turn it off
+    for (int i = 0; i < 12; i++) {
+        HAL_GPIO_WritePin(GPIOA, ledPins[i], RESET); // Turn off LED
+    }
+}
 /* USER CODE END 0 */
 
 /**
@@ -83,17 +96,31 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint16_t ledPins[12] = {D1_Pin, D2_Pin, D3_Pin, D4_Pin,
+                            D5_Pin, D6_Pin, D7_Pin, D8_Pin,
+                            D9_Pin, D10_Pin, D11_Pin, D12_Pin};
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  for (int i = 0; i < 12; i++)
+	  {
+		  HAL_GPIO_WritePin(GPIOA, ledPins[i], GPIO_PIN_SET); // Turn on LED
+		  HAL_Delay(500); // Wait for 500 ms before lighting the next LED
+	  }
+
+	  HAL_Delay(1000);
+	  clearAllClock(); // Turn off all LEDs simultaneously
+	  HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }
@@ -131,6 +158,36 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, D1_Pin|D2_Pin|D3_Pin|D4_Pin
+                          |D5_Pin|D6_Pin|D7_Pin|D8_Pin
+                          |D9_Pin|D10_Pin|D11_Pin|D12_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : D1_Pin D2_Pin D3_Pin D4_Pin
+                           D5_Pin D6_Pin D7_Pin D8_Pin
+                           D9_Pin D10_Pin D11_Pin D12_Pin */
+  GPIO_InitStruct.Pin = D1_Pin|D2_Pin|D3_Pin|D4_Pin
+                          |D5_Pin|D6_Pin|D7_Pin|D8_Pin
+                          |D9_Pin|D10_Pin|D11_Pin|D12_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */

@@ -1,36 +1,48 @@
-!SESSION 2024-09-19 13:51:36.599 -----------------------------------------------
+!SESSION 2024-09-26 15:33:56.453 -----------------------------------------------
 eclipse.buildId=Version 1.7.0
 java.version=11.0.10
 java.vendor=AdoptOpenJDK
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-09-19 13:51:59.445
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-09-26 15:34:24.708
 !MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-09-19 13:51:59.594
-!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\1652026-VXL-MCU\.metadata\.log4j.xml
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-09-26 15:34:24.853
+!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\BeforeGit\.metadata\.log4j.xml
 
-!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-09-19 13:52:05.788
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-09-26 15:34:44.335
 !MESSAGE Started RMI Server, listening on port 41337
 
-!ENTRY org.eclipse.cdt.core 1 0 2024-09-19 13:54:55.114
-!MESSAGE Indexed 'Lab1' (19 sources, 78 headers) in 6.07 sec: 3,647 declarations; 13,136 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
-!SESSION 2024-09-19 15:38:39.107 -----------------------------------------------
+!ENTRY org.eclipse.cdt.core 1 0 2024-09-26 15:37:23.886
+!MESSAGE Indexed 'Lab1' (19 sources, 78 headers) in 7.25 sec: 3,647 declarations; 13,136 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+!SESSION 2024-10-30 14:09:45.781 -----------------------------------------------
 eclipse.buildId=Version 1.7.0
 java.version=11.0.10
 java.vendor=AdoptOpenJDK
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
-!ENTRY org.eclipse.core.resources 2 10035 2024-09-19 15:39:02.121
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-09-19 15:39:10.950
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-10-30 14:10:14.833
 !MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-09-19 15:39:11.097
-!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\1652026-VXL-MCU\.metadata\.log4j.xml
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-10-30 14:10:14.922
+!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\BeforeGit\.metadata\.log4j.xml
 
-!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-09-19 15:40:05.312
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-10-30 14:10:26.980
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-10-30 20:54:38.479 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-10-30 20:54:44.481
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-10-30 20:54:44.526
+!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\BeforeGit\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-10-30 20:54:54.861
 !MESSAGE Started RMI Server, listening on port 41337
