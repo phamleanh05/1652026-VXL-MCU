@@ -1,1 +1,4 @@
-# 1652026-VXL-MCU
+Vi xử lý lab 1
+- main.c
+- proteus
+  
